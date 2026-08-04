@@ -562,6 +562,174 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     align-items: center;
   }
 }
+/* Layout Container: Keeps 3 reels in one horizontal line */
+.insta-reels-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Individual Reel Card (Instagram 9:16 vertical ratio) */
+.insta-card {
+  position: relative;
+  width: 100%;
+  max-width: 270px;
+  aspect-ratio: 9 / 16;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #000;
+}
+
+.insta-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Video element inside card */
+.insta-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark gradient overlay for text readability */
+.insta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.4) 0%,
+    transparent 35%,
+    rgba(0,0,0,0.75) 100%
+  );
+  pointer-events: none;
+}
+
+/* Exclusive Tag Badge */
+.insta-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Interactive Sound Toggle Button */
+.insta-sound-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  z-index: 3;
+}
+
+.insta-sound-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Title text */
+.insta-title {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  z-index: 2;
+}
+
+/* Modal Popup Styles */
+.insta-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.insta-modal-content {
+  position: relative;
+  background: #111;
+  padding: 20px;
+  border-radius: 24px;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.insta-modal-content video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.insta-modal-content h3 {
+  color: #fff;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.insta-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #aaa;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.insta-close-btn:hover {
+  color: #fff;
+}
+
+/* Responsive layout adjustments for mobile screens */
+@media (max-width: 768px) {
+  .insta-reels-container {
+    flex-direction: column;
+  }
+  .insta-card {
+    max-width: 300px;
+  }
+}
 
 </style>
 </head>
@@ -606,7 +774,7 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     <div class="hero-divider"></div>
     <div class="hero-date-block">
       <div class="hero-date-big">November 21, 2026</div>
-      <div class="hero-venue">Cherupuzha, Kannur</div>
+      <div class="hero-venue">Alakode, Kannur</div>
     </div>
     <div class="hero-divider"></div>
     <a href="#journey" class="hero-cta">View Schedule</a>
@@ -670,27 +838,52 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     <span class="eyebrow">For our loved ones</span>
     <h2>Exclusive Videos</h2>
     <p>A few moments we've captured along the way — tap to watch.</p>
+      <div class="insta-reels-container">
+  <!-- Reel 1 -->
+  <div class="insta-card" data-title="The Proposal" onclick="openReelModal('video1.mp4', 'The Proposal')">
+    <video src="video1.mp4" preload="metadata" autoplay muted loop playsinline></video>
+    <div class="insta-overlay"></div>
+    <span class="insta-badge">Exclusive</span>
+    <button class="insta-sound-btn" onclick="toggleSound(event, this)">
+      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+    </button>
+    <div class="insta-title">The Proposal</div>
   </div>
-  <div class="video-grid reveal">
-    <div class="v-card" data-title="The Proposal" data-note="Link here">
-      <img src="video1.mp4" alt="Proposal" loading="lazy">
-      <span class="lock">Exclusive</span>
-      <div class="play"><div class="play-btn"></div></div>
-      <div class="v-title">The Proposal</div>
-    </div>
-    <div class="v-card" data-title="Save the Date Film" data-note="Link here">
-      <img src="video1.mp4" alt="Save the date" loading="lazy">
-      <span class="lock">Exclusive</span>
-      <div class="play"><div class="play-btn"></div></div>
-      <div class="v-title">Save the Date Film</div>
-    </div>
-    <div class="v-card" data-title="Our Story, Told" data-note="Link here">
-      <img src="video1.mp4" alt="Our story" loading="lazy">
-      <span class="lock">Exclusive</span>
-      <div class="play"><div class="play-btn"></div></div>
-      <div class="v-title">Our Story, Told</div>
-    </div>
+
+  <!-- Reel 2 -->
+  <div class="insta-card" data-title="Our Journey" onclick="openReelModal('video2.mp4', 'Our Journey')">
+    <video src="video2.mp4" preload="metadata" autoplay muted loop playsinline></video>
+    <div class="insta-overlay"></div>
+    <span class="insta-badge">Exclusive</span>
+    <button class="insta-sound-btn" onclick="toggleSound(event, this)">
+      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+    </button>
+    <div class="insta-title">Our Journey</div>
   </div>
+
+  <!-- Reel 3 -->
+  <div class="insta-card" data-title="Special Memories" onclick="openReelModal('video3.mp4', 'Special Memories')">
+    <video src="video3.mp4" preload="metadata" autoplay muted loop playsinline></video>
+    <div class="insta-overlay"></div>
+    <span class="insta-badge">Exclusive</span>
+    <button class="insta-sound-btn" onclick="toggleSound(event, this)">
+      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+    </button>
+    <div class="insta-title">Special Memories</div>
+  </div>
+</div>
+
+<!-- Modal Popup for Enlarged View -->
+<div id="reelModal" class="insta-modal" onclick="closeReelModal()">
+  <div class="insta-modal-content" onclick="event.stopPropagation()">
+    <span class="insta-close-btn" onclick="closeReelModal()">&times;</span>
+    <video id="modalVideo" controls autoplay playsinline></video>
+    <h3 id="modalTitle"></h3>
+  </div>
+</div>
+     </div>
+    </div>
+ </div>
 </section>
 
 <section class="section" id="journey">
@@ -706,7 +899,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     <div class="roadmap" id="roadmap">
         <div class="rm-step" data-date="2026-03-21"><div class="rm-num">01</div><div class="rm-step-content"><h3>Fixation</h3><div class="rm-date">21 Mar 2026</div><p>Families formalize alliance.</p></div></div>
         <div class="rm-step" data-date="2026-11-16"><div class="rm-num">02</div><div class="rm-step-content"><h3>Engagement</h3><div class="rm-date">16 Nov 2026</div><p>Rings exchanged.</p></div></div>
-        <div class="rm-step" data-date="2026-11-20"><div class="rm-num">03</div><div class="rm-step-content"><h3>Madhuram Veppu</h3><div class="rm-date">20 Nov 2026</div><p>Sweet ceremony.</p></div></div>
         <div class="rm-step" data-date="2026-11-21"><div class="rm-num">04</div><div class="rm-step-content"><h3>Marriage</h3><div class="rm-date">21 Nov 2026</div><p>Becoming one.</p></div></div>
         <div class="rm-step" data-date="2026-11-21"><div class="rm-num">05</div><div class="rm-step-content"><h3>Reception</h3><div class="rm-date">21 Nov 2026</div><p>Grand celebration.</p></div></div>
     </div>

@@ -730,6 +730,58 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     max-width: 300px;
   }
 }
+    /* ==========================================
+   OUR STORY SECTION STYLES
+   ========================================== */
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.story-img-wrapper {
+    position: relative;
+    padding: 15px;
+    border: 1px solid var(--accent-warm); /* Warm sand border frame */
+}
+
+.story-img-wrapper img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+.story-text {
+    padding: 20px 0;
+}
+
+.story-text h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.story-text p {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Mobile responsiveness for Our Story section */
+@media (max-width: 768px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .story-img-wrapper img {
+        height: 350px; /* Reduced height on mobile screens */
+    }
+}
 
 </style>
 </head>
@@ -830,7 +882,23 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
 </section>
 -->
 <div class="wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,30 C400,80 1040,-10 1440,30 L1440,70 L0,70 Z" fill="#E7F1F7"></path></svg></div>
-
+<section class="section" id="galleryus">
+          <div class="text-center">
+            <p class="section-subtitle">Beginning of Forever</p>
+            <h2 class="section-title">Our Story</h2>
+        </div>
+        <div class="story-grid fade-element">
+            <div class="story-img-wrapper">
+                <!-- Replace with couple photo -->
+                <img src="image2.jpeg" alt="Santhwana and Bibin">
+            </div>
+            <div class="story-text">
+                <h3 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 15px; color: var(--primary);">Two Hearts, One Journey</h3>
+                <p>From quietly shared glances to conversations that stretched late into the night, our story unfolded naturally, rooted in love, laughter, and family blessings.</p>
+                <p>What began as a quiet connection soon transformed into an unwavering partnership. Today, surrounded by the warmth of our loved ones, we step joyfully into this next chapter of our lives together.</p>
+            </div>
+        </div>
+</section>
 <section class="section" id="videos">
   <div class="section-branch left"></div>
   <div class="section-branch right"></div>
@@ -952,6 +1020,7 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   <div class="section-head reveal"><h2>Leave Your Wishes</h2></div>
   <div class="wishes-wrap reveal"><form class="wish-form" id="wishForm"><input type="text" id="wishName" placeholder="Your name" required><textarea id="wishMsg" placeholder="Your wishes..." required></textarea><button type="submit" class="btn">Send Wishes</button><div id="wishThanks">Thank you! 💙</div></form><div class="wish-list" id="wishList"></div></div>
 </section>
+
 <section class="section" id="gallery">
   <div class="section-branch left"></div>
   <div class="section-branch right"></div>

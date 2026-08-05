@@ -782,6 +782,53 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
         height: 350px; /* Reduced height on mobile screens */
     }
 }
+    /* ==========================================
+   FLOATING MUSIC PLAYER BUTTON (BOTTOM-LEFT)
+   ========================================== */
+.music-player-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1500;
+    transition: all 0.3s ease;
+}
+
+.music-player-btn:hover {
+    transform: scale(1.08);
+    border-color: var(--accent);
+}
+
+.music-player-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--primary);
+    transition: fill 0.3s ease;
+}
+
+/* Rotating animation when music is playing */
+.music-player-btn.playing {
+    border-color: var(--accent);
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(163, 177, 155, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 18px rgba(163, 177, 155, 0.7);
+    }
+}
 
 </style>
 </head>
@@ -1027,12 +1074,64 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   <div class="section-head reveal"><h2>Our Photo Gallery</h2></div>
   <div class="flipbook reveal"><div class="flip-stage"><img id="flipImg" src="https://picsum.photos/seed/flip1/700/900" alt="Gallery"><div class="flip-count" id="flipCount">1 / 8</div></div><div class="flip-controls"><button class="flip-btn prev" id="prevPhoto">&#8249;</button><button class="flip-btn next" id="nextPhoto">Next Photo &#8250;</button></div></div>
 </section>
+<!-- FLOATING MUSIC PLAYER BUTTON -->
+<div class="music-player-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Background Music">
+    <!-- Play Icon -->
+    <svg id="playIcon" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+    </svg>
+    <!-- Pause Icon -->
+    <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+</div>
 
+<!-- Audio element (Replace audio source URL with your preferred MP3 link) -->
+<audio id="bgMusic" loop>
+    <source src="whatsap.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 <footer>
   <div class="script">Theres &amp; Midhun</div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+    // --- Floating Music Player Controls ---
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+const playIcon = document.getElementById('playIcon');
+const pauseIcon = document.getElementById('pauseIcon');
+
+function toggleMusic() {
+    if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+            musicBtn.classList.add('playing');
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        }).catch(error => {
+            console.log("Autoplay prevented by browser:", error);
+        });
+    } else {
+        bgMusic.pause();
+        musicBtn.classList.remove('playing');
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    }
+}
+
+// Optional: Start music automatically on the user's first interaction anywhere on the page
+document.addEventListener('click', function startOnFirstInteraction() {
+    if (bgMusic.paused && !musicBtn.classList.contains('user-paused')) {
+        bgMusic.play().then(() => {
+            musicBtn.classList.add('playing');
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        }).catch(() => {});
+    }
+    document.removeEventListener('click', startOnFirstInteraction);
+}, { once: true });
+</script>
 <script>
 /* ===================== CONFIG ===================== */
 const WEDDING = {
@@ -1094,5 +1193,6 @@ L.marker([WEDDING.venueLat, WEDDING.venueLng]).addTo(map);
 
 document.getElementById('burger').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
 </script>
+
 </body>
 </html>

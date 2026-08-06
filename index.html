@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Fixed width viewport forces mobile browsers to render the full desktop canvas -->
+<meta name="viewport" content="width=1280, initial-scale=0.35, maximum-scale=3.0, user-scalable=yes">
 <title>Theres &amp; Midhun — Our Wedding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,8 +30,9 @@ body{
   font-family:'Jost',sans-serif;
   background:var(--cream);
   color:var(--ink-soft);
-  overflow-x:hidden;
+  overflow-x:auto;
   line-height:1.6;
+  min-width: 1280px; /* Enforces desktop layout width minimum */
 }
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
@@ -107,6 +109,7 @@ header.nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:22px 5vw;
   transition:background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
+  min-width: 1280px;
 }
 header.nav.scrolled{
   background:rgba(242, 245, 248, 0.92);
@@ -119,9 +122,8 @@ header.nav.scrolled{
 .nav-links a{
   font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--ink);
-  font-weight: 600; /* Increased weight for visibility */
+  font-weight: 600;
   position:relative;padding-bottom:4px;
-  /* Premium readability boost for over-image text */
   text-shadow: 0px 1px 3px rgba(255,255,255,0.8), 0px 0px 5px rgba(226,238,245,0.5);
 }
 .nav-links a::after{
@@ -130,8 +132,7 @@ header.nav.scrolled{
 }
 .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
 .nav-links a.active{color:var(--ink);}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:600;}
-.burger span{width:26px;height:2px;background:var(--ink);transition:.3s;}
+.burger{display:none;}
 
 .dot-nav{
   position:fixed;right:26px;top:50%;transform:translateY(-50%);
@@ -152,13 +153,8 @@ header.nav.scrolled{
 .dot-nav a:hover .tip{opacity:1;}
 
 /* ============ HERO ============ */
-@keyframes kenburns-subtle {
-  0% { transform: scale(1.05) translate(1%, 1%); }
-  100% { transform: scale(1.05) translate(-1%, -1%); }
-}
-
 #home {
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,6 +163,7 @@ header.nav.scrolled{
   padding: 120px 6vw;
   overflow: hidden;
   background-color: var(--cream);
+  min-width: 1280px;
 }
 
 .hero-scene {
@@ -180,7 +177,6 @@ header.nav.scrolled{
   pointer-events: none;
 }
 
-/* ============ WATER ON GLASS EFFECT ============ */
 .shimmer-field {
   position: absolute;
   inset: 0;
@@ -215,18 +211,17 @@ header.nav.scrolled{
 }
 
 .hero-inner {
-  max-width: 640px;
+  max-width: 700px;
   background: radial-gradient(circle, rgba(242,245,248,0.85) 0%, rgba(242,245,248,0.4) 40%, rgba(242,245,248,0) 70%);
   padding: 40px;
   border-radius: 50%;
 }
-.hero-inner{position:relative;z-index:2;max-width:700px;}
 .hero-inner .eyebrow{display:block;margin-bottom:22px;letter-spacing:.35em;}
 .hero-names{
   font-family:'Marck Script',cursive;
   font-style:normal;
   font-weight:400;
-  font-size:clamp(3.5rem,9vw,6.8rem);
+  font-size:5.5rem;
   color:var(--ink);
   line-height:1.1;
   text-shadow: 0 10px 30px rgba(34,58,77,0.08);
@@ -237,12 +232,11 @@ header.nav.scrolled{
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-size: 1.35rem;
   color: var(--ink-soft);
 }
 .hero-divider {
   width: 340px;
-  max-width: 70vw;
   height: 1px;
   background: var(--powder-deep);
   opacity: .45;
@@ -252,7 +246,7 @@ header.nav.scrolled{
 .hero-date-big {
   font-family: 'Jost', sans-serif;
   font-weight: 600;
-  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  font-size: 1.35rem;
   letter-spacing: .1em;
   color: var(--ink);
   text-transform: uppercase;
@@ -340,20 +334,6 @@ header.nav.scrolled{
 .story-item p{font-size:.98rem;max-width:560px;}
 
 #videos{background:var(--powder-pale);}
-.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.v-card{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/10;cursor:pointer;box-shadow:var(--shadow);}
-.v-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.72);transition:transform .6s var(--ease), filter .4s;}
-.v-card:hover img{transform:scale(1.07);filter:brightness(.55);}
-.v-card .lock{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.85);color:var(--ink);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:20px;}
-.v-card .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
-.play-btn{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease);}
-.v-card:hover .play-btn{transform:scale(1.12);}
-.play-btn::after{content:"";border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent var(--ink);margin-left:4px;}
-.v-card .v-title{position:absolute;bottom:14px;left:16px;color:#fff;font-family:'Playfair Display',serif;font-size:1.05rem;}
-.video-modal{position:fixed;inset:0;background:rgba(20,32,42,.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:30px;}
-.video-modal.open{display:flex;}
-.video-modal .box{background:var(--cream);border-radius:12px;max-width:560px;width:100%;padding:44px 34px;text-align:center;position:relative;}
-.video-modal .close{position:absolute;top:14px;right:20px;font-size:1.6rem;cursor:pointer;color:var(--ink-soft);}
 
 #journey{background:var(--white);position:relative;}
 .roadmap-container{max-width:1100px;margin:50px auto 0;position:relative;padding:0 20px;}
@@ -396,68 +376,8 @@ header.nav.scrolled{
 .wish-card .w-msg{font-size:.9rem;}
 .wish-empty{text-align:center;font-size:.85rem;opacity:.6;}
 
-.music-toggle{position:fixed;bottom:26px;left:26px;z-index:600;width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 26px -8px rgba(34,58,77,.5);border:none;}
-.music-toggle svg{width:20px;height:20px;}
-.music-toggle .disc{animation:spin 4s linear infinite;animation-play-state:paused;}
-.music-toggle.playing .disc{animation-play-state:running;}
-@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-
 #location{background:var(--cream);}
-.loc-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start;}
-.loc-card{background:var(--white);border-radius:14px;padding:34px;box-shadow:var(--shadow);}
-.loc-card h3{font-size:1.3rem;margin-bottom:6px;}
-.loc-card .addr{margin:14px 0 22px;font-size:.95rem;}
-.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);padding:13px 26px;border-radius:30px;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;}
-.btn:hover{background:var(--powder-deep);}
-.btn.outline{background:transparent;border:1px solid var(--ink);color:var(--ink);}
-.btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
-#distance-result{margin-top:18px;padding:16px 18px;border-radius:8px;background:var(--powder-pale);font-size:.9rem;color:var(--ink);display:none;}
-#distance-result.show{display:block;}
-.schedule{margin-top:26px;}
-.schedule .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--powder);font-size:.88rem;}
-.schedule .row:last-child{border-bottom:none;}
-#map{width:100%;height:460px;border-radius:14px;box-shadow:var(--shadow);}
-
-#gallery{background:var(--powder-pale);}
-.flipbook{max-width:480px;margin:0 auto;text-align:center;}
-.flip-stage{position:relative;width:100%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);perspective:1600px;background:var(--white);}
-.flip-stage img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:left center;transition:transform .45s ease-in, opacity .45s ease-in;backface-visibility:hidden;}
-.flip-stage img.turning{transform:rotateY(-100deg);opacity:.2;}
-.flip-count{position:absolute;bottom:14px;right:16px;background:rgba(34,58,77,.65);color:#fff;font-size:.72rem;letter-spacing:.08em;padding:5px 12px;border-radius:20px;}
-.flip-controls{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:28px;}
-.flip-btn{border:none;cursor:pointer;font-family:'Jost',sans-serif;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;transition:background .3s, transform .2s;}
-.flip-btn.next{background:var(--ink);color:var(--cream);padding:13px 28px;border-radius:30px;}
-.flip-btn.next:hover{background:var(--powder-deep);transform:translateX(2px);}
-.flip-btn.prev{background:transparent;border:1px solid var(--powder-deep);color:var(--ink);width:44px;height:44px;padding:0;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;}
-.flip-btn.prev:hover{background:var(--white);}
-
-footer{text-align:center;padding:70px 6vw 50px;background:var(--ink);color:var(--powder-pale);}
-footer .script{font-size:2.4rem;color:var(--white);}
-footer p{margin-top:14px;font-size:.85rem;opacity:.75;}
-footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.5;}
-
-@media (max-width:960px){
-  .section-branch{opacity:0.2;}
-  .nav-links{position:fixed;top:0;right:0;height:100vh;width:70vw;background:var(--cream);flex-direction:column;justify-content:center;align-items:flex-start;padding:0 40px;transform:translateX(100%);transition:transform .4s var(--ease);gap:26px;box-shadow:-10px 0 30px rgba(0,0,0,.1);}
-  .nav-links.open{transform:translateX(0);}
-  .burger{display:flex;}
-  .dot-nav{display:none;}
-  .photo-grid{grid-template-columns:repeat(2,1fr);}
-  .photo-grid .ph:nth-child(2),.photo-grid .ph:nth-child(4){margin-top:0;}
-  .masonry{columns:2 160px;}
-  .video-grid{grid-template-columns:1fr;}
-  .family-cols{grid-template-columns:1fr;}
-  .loc-wrap{grid-template-columns:1fr;}
-  .roadmap-container{padding-left:40px;margin-top:30px;}
-  .roadmap-line-bg{left:48px;top:0;bottom:0;width:2px;height:auto;right:auto;}
-  .roadmap-line-progress{width:100%;height:0%;}
-  .roadmap{flex-direction:column;gap:40px;}
-  .rm-step{display:flex;text-align:left;align-items:flex-start;gap:20px;}
-  .rm-num{margin:0;flex-shrink:0;}
-  .rm-step-content{margin-top:4px;}
-  .rm-step h3{display:block;}
-}
-    .wedding-location-section {
+.wedding-location-section {
   display: flex;
   justify-content: center;
   padding: 40px 20px;
@@ -551,18 +471,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   background-color: #2980b9;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .location-actions {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .link-box {
-    align-items: center;
-  }
-}
-/* Layout Container: Keeps 3 reels in one horizontal line */
 .insta-reels-container {
   display: flex;
   gap: 20px;
@@ -574,7 +482,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   padding: 20px;
 }
 
-/* Individual Reel Card (Instagram 9:16 vertical ratio) */
 .insta-card {
   position: relative;
   width: 100%;
@@ -593,7 +500,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
-/* Video element inside card */
 .insta-card video {
   width: 100%;
   height: 100%;
@@ -601,7 +507,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   display: block;
 }
 
-/* Dark gradient overlay for text readability */
 .insta-overlay {
   position: absolute;
   inset: 0;
@@ -614,7 +519,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   pointer-events: none;
 }
 
-/* Exclusive Tag Badge */
 .insta-badge {
   position: absolute;
   top: 15px;
@@ -629,7 +533,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Interactive Sound Toggle Button */
 .insta-sound-btn {
   position: absolute;
   top: 15px;
@@ -653,7 +556,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* Title text */
 .insta-title {
   position: absolute;
   bottom: 20px;
@@ -666,7 +568,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   z-index: 2;
 }
 
-/* Modal Popup Styles */
 .insta-modal {
   display: none;
   position: fixed;
@@ -721,18 +622,6 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   color: #fff;
 }
 
-/* Responsive layout adjustments for mobile screens */
-@media (max-width: 768px) {
-  .insta-reels-container {
-    flex-direction: column;
-  }
-  .insta-card {
-    max-width: 300px;
-  }
-}
-    /* ==========================================
-   OUR STORY SECTION STYLES
-   ========================================== */
 .story-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -743,7 +632,7 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
 .story-img-wrapper {
     position: relative;
     padding: 15px;
-    border: 1px solid var(--accent-warm); /* Warm sand border frame */
+    border: 1px solid var(--accent-warm, #C6A15B);
 }
 
 .story-img-wrapper img {
@@ -758,41 +647,40 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
 }
 
 .story-text h3 {
-    font-family: var(--font-serif);
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
     margin-bottom: 15px;
-    color: var(--primary);
+    color: var(--ink);
 }
 
 .story-text p {
     margin-bottom: 20px;
-    color: var(--text-muted);
+    color: var(--ink-soft);
     font-size: 1.05rem;
     line-height: 1.6;
 }
 
-/* Mobile responsiveness for Our Story section */
-@media (max-width: 768px) {
-    .story-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
+#gallery{background:var(--powder-pale);}
+.flipbook{max-width:480px;margin:0 auto;text-align:center;}
+.flip-stage{position:relative;width:100%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);perspective:1600px;background:var(--white);}
+.flip-stage img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:left center;transition:transform .45s ease-in, opacity .45s ease-in;backface-visibility:hidden;}
+.flip-stage img.turning{transform:rotateY(-100deg);opacity:.2;}
+.flip-count{position:absolute;bottom:14px;right:16px;background:rgba(34,58,77,.65);color:#fff;font-size:.72rem;letter-spacing:.08em;padding:5px 12px;border-radius:20px;}
+.flip-controls{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:28px;}
+.flip-btn{border:none;cursor:pointer;font-family:'Jost',sans-serif;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;transition:background .3s, transform .2s;}
+.flip-btn.next{background:var(--ink);color:var(--cream);padding:13px 28px;border-radius:30px;}
+.flip-btn.next:hover{background:var(--powder-deep);transform:translateX(2px);}
+.flip-btn.prev{background:transparent;border:1px solid var(--powder-deep);color:var(--ink);width:44px;height:44px;padding:0;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;}
+.flip-btn.prev:hover{background:var(--white);}
 
-    .story-img-wrapper img {
-        height: 350px; /* Reduced height on mobile screens */
-    }
-}
-    /* ==========================================
-   FLOATING MUSIC PLAYER BUTTON (BOTTOM-LEFT)
-   ========================================== */
 .music-player-btn {
     position: fixed;
     bottom: 25px;
     left: 25px;
     width: 50px;
     height: 50px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
+    background: var(--white);
+    border: 1px solid var(--powder);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -805,31 +693,29 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
 
 .music-player-btn:hover {
     transform: scale(1.08);
-    border-color: var(--accent);
+    border-color: var(--gold);
 }
 
 .music-player-btn svg {
     width: 22px;
     height: 22px;
-    fill: var(--primary);
+    fill: var(--ink);
     transition: fill 0.3s ease;
 }
 
-/* Rotating animation when music is playing */
 .music-player-btn.playing {
-    border-color: var(--accent);
+    border-color: var(--gold);
     animation: pulseGlow 2s infinite alternate;
 }
 
 @keyframes pulseGlow {
-    0% {
-        box-shadow: 0 0 5px rgba(163, 177, 155, 0.3);
-    }
-    100% {
-        box-shadow: 0 0 18px rgba(163, 177, 155, 0.7);
-    }
+    0% { box-shadow: 0 0 5px rgba(198, 161, 91, 0.3); }
+    100% { box-shadow: 0 0 18px rgba(198, 161, 91, 0.7); }
 }
 
+footer{text-align:center;padding:70px 6vw 50px;background:var(--ink);color:var(--powder-pale);min-width: 1280px;}
+footer .script{font-size:2.4rem;color:var(--white);}
+footer p{margin-top:14px;font-size:.85rem;opacity:.75;}
 </style>
 </head>
 <body>
@@ -839,16 +725,12 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
   <ul class="nav-links" id="navLinks">
     <li><a href="#home">Home</a></li>
     <li><a href="#save-the-date">Save the Date</a></li>
-    <li><a href="#engagement">Engagement</a></li>
-    <li><a href="#story">Our Story</a></li>
-    <li><a href="#videos">Videos</a></li>
+    <li><a href="#location">Location</a></li>
     <li><a href="#journey">Journey</a></li>
     <li><a href="#family">Family</a></li>
     <li><a href="#wishes">Wishes</a></li>
-    <li><a href="#location">Location</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </header>
 
 <nav class="dot-nav" id="dotNav">
@@ -905,47 +787,26 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     <div class="ph" data-full="https://picsum.photos/seed/std4/900/1200"><img src="pic4.jpeg" alt="Us" loading="lazy"><div class="cap">Us, Always</div></div>
   </div>
 </section>
-<!--
-<div class="wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,40 C360,90 1080,0 1440,40 L1440,70 L0,70 Z" fill="#E7F1F7"></path></svg></div>
 
-<section class="section" id="engagement">
-  <div class="section-branch left"></div>
-  <div class="section-branch right"></div>
-  <div class="section-head reveal">
-    <span class="eyebrow">The promise</span>
-    <h2>Engagement Photos</h2>
-    <p>A few frames from the day we made it official.</p>
-  </div>
-  <div class="masonry reveal" id="masonry">
-    <div class="m-item" data-full="https://picsum.photos/seed/eng1/800/1000"><img src="https://picsum.photos/seed/eng1/400/520" alt="Engagement photo" loading="lazy"></div>
-    <div class="m-item" data-full="https://picsum.photos/seed/eng2/800/650"><img src="https://picsum.photos/seed/eng2/400/320" alt="Engagement photo" loading="lazy"></div>
-    <div class="m-item" data-full="https://picsum.photos/seed/eng3/800/1100"><img src="https://picsum.photos/seed/eng3/400/560" alt="Engagement photo" loading="lazy"></div>
-    <div class="m-item" data-full="https://picsum.photos/seed/eng4/800/900"><img src="https://picsum.photos/seed/eng4/400/460" alt="Engagement photo" loading="lazy"></div>
-    <div class="m-item" data-full="https://picsum.photos/seed/eng5/800/700"><img src="https://picsum.photos/seed/eng5/400/360" alt="Engagement photo" loading="lazy"></div>
-    <div class="m-item" data-full="https://picsum.photos/seed/eng6/800/1050"><img src="https://picsum.photos/seed/eng6/400/540" alt="Engagement photo" loading="lazy"></div>
-    <div class="m-item" data-full="https://picsum.photos/seed/eng7/800/950"><img src="https://picsum.photos/seed/eng7/400/480" alt="Engagement photo" loading="lazy"></div>
-    <div class="m-item" data-full="https://picsum.photos/seed/eng8/800/650"><img src="https://picsum.photos/seed/eng8/400/330" alt="Engagement photo" loading="lazy"></div>
-  </div>
-</section>
--->
 <div class="wave"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,30 C400,80 1040,-10 1440,30 L1440,70 L0,70 Z" fill="#E7F1F7"></path></svg></div>
+
 <section class="section" id="galleryus">
-          <div class="text-center">
-            <p class="section-subtitle">Beginning of Forever</p>
-            <h2 class="section-title">Our Story</h2>
-        </div>
-        <div class="story-grid fade-element">
-            <div class="story-img-wrapper">
-                <!-- Replace with couple photo -->
-                <img src="image2.jpeg" alt="Santhwana and Bibin">
-            </div>
-            <div class="story-text">
-                <h3 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 15px; color: var(--primary);">Two Hearts, One Journey</h3>
-                <p>From quietly shared glances to conversations that stretched late into the night, our story unfolded naturally, rooted in love, laughter, and family blessings.</p>
-                <p>What began as a quiet connection soon transformed into an unwavering partnership. Today, surrounded by the warmth of our loved ones, we step joyfully into this next chapter of our lives together.</p>
-            </div>
-        </div>
+  <div class="section-head reveal">
+    <span class="eyebrow">Beginning of Forever</span>
+    <h2>Our Story</h2>
+  </div>
+  <div class="story-grid reveal">
+    <div class="story-img-wrapper">
+        <img src="image2.jpeg" alt="Theres and Midhun">
+    </div>
+    <div class="story-text">
+        <h3>Two Hearts, One Journey</h3>
+        <p>From quietly shared glances to conversations that stretched late into the night, our story unfolded naturally, rooted in love, laughter, and family blessings.</p>
+        <p>What began as a quiet connection soon transformed into an unwavering partnership. Today, surrounded by the warmth of our loved ones, we step joyfully into this next chapter of our lives together.</p>
+    </div>
+  </div>
 </section>
+
 <section class="section" id="videos">
   <div class="section-branch left"></div>
   <div class="section-branch right"></div>
@@ -953,52 +814,46 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     <span class="eyebrow">For our loved ones</span>
     <h2>Exclusive Videos</h2>
     <p>A few moments we've captured along the way — tap to watch.</p>
-      <div class="insta-reels-container">
-  <!-- Reel 1 -->
-  <div class="insta-card" data-title="The Proposal" onclick="openReelModal('video1.mp4', 'The Proposal')">
-    <video src="video1.mp4" preload="metadata" autoplay muted loop playsinline></video>
-    <div class="insta-overlay"></div>
-    <span class="insta-badge">Exclusive</span>
-    <button class="insta-sound-btn" onclick="toggleSound(event, this)">
-      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-    </button>
-    <div class="insta-title">The Proposal</div>
   </div>
-
-  <!-- Reel 2 -->
-  <div class="insta-card" data-title="Our Journey" onclick="openReelModal('video2.mp4', 'Our Journey')">
-    <video src="video2.mp4" preload="metadata" autoplay muted loop playsinline></video>
-    <div class="insta-overlay"></div>
-    <span class="insta-badge">Exclusive</span>
-    <button class="insta-sound-btn" onclick="toggleSound(event, this)">
-      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-    </button>
-    <div class="insta-title">Our Journey</div>
-  </div>
-
-  <!-- Reel 3 -->
-  <div class="insta-card" data-title="Special Memories" onclick="openReelModal('video3.mp4', 'Special Memories')">
-    <video src="video3.mp4" preload="metadata" autoplay muted loop playsinline></video>
-    <div class="insta-overlay"></div>
-    <span class="insta-badge">Exclusive</span>
-    <button class="insta-sound-btn" onclick="toggleSound(event, this)">
-      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-    </button>
-    <div class="insta-title">Special Memories</div>
-  </div>
-</div>
-
-<!-- Modal Popup for Enlarged View -->
-<div id="reelModal" class="insta-modal" onclick="closeReelModal()">
-  <div class="insta-modal-content" onclick="event.stopPropagation()">
-    <span class="insta-close-btn" onclick="closeReelModal()">&times;</span>
-    <video id="modalVideo" controls autoplay playsinline></video>
-    <h3 id="modalTitle"></h3>
-  </div>
-</div>
-     </div>
+  <div class="insta-reels-container reveal">
+    <div class="insta-card" data-title="The Proposal" onclick="openReelModal('video1.mp4', 'The Proposal')">
+      <video src="video1.mp4" preload="metadata" autoplay muted loop playsinline></video>
+      <div class="insta-overlay"></div>
+      <span class="insta-badge">Exclusive</span>
+      <button class="insta-sound-btn" onclick="toggleSound(event, this)">
+        <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+      </button>
+      <div class="insta-title">The Proposal</div>
     </div>
- </div>
+
+    <div class="insta-card" data-title="Our Journey" onclick="openReelModal('video2.mp4', 'Our Journey')">
+      <video src="video2.mp4" preload="metadata" autoplay muted loop playsinline></video>
+      <div class="insta-overlay"></div>
+      <span class="insta-badge">Exclusive</span>
+      <button class="insta-sound-btn" onclick="toggleSound(event, this)">
+        <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+      </button>
+      <div class="insta-title">Our Journey</div>
+    </div>
+
+    <div class="insta-card" data-title="Special Memories" onclick="openReelModal('video3.mp4', 'Special Memories')">
+      <video src="video3.mp4" preload="metadata" autoplay muted loop playsinline></video>
+      <div class="insta-overlay"></div>
+      <span class="insta-badge">Exclusive</span>
+      <button class="insta-sound-btn" onclick="toggleSound(event, this)">
+        <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+      </button>
+      <div class="insta-title">Special Memories</div>
+    </div>
+  </div>
+
+  <div id="reelModal" class="insta-modal" onclick="closeReelModal()">
+    <div class="insta-modal-content" onclick="event.stopPropagation()">
+      <span class="insta-close-btn" onclick="closeReelModal()">&times;</span>
+      <video id="modalVideo" controls autoplay playsinline></video>
+      <h3 id="modalTitle"></h3>
+    </div>
+  </div>
 </section>
 
 <section class="section" id="journey">
@@ -1028,76 +883,101 @@ footer .hearts{margin-top:22px;font-size:.75rem;letter-spacing:.1em;text-transfo
     <h2>Family Details</h2>
   </div>
   <div class="family-cols reveal">
-    <div class="family-card"><h3>Groom's Family</h3><span class="eyebrow sub">Midhun</span><div class="member"><div class="avatar"></div><div><div class="m-name">Mr. George Devasia</div><div class="m-rel">Father</div></div></div><div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Shanty George</div><div class="m-rel">Mother</div></div></div><div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Jithin &amp; Mrs. Mariya</div><div class="m-rel">Brother &amp; Sister-in-law</div></div></div><div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Athul George</div><div class="m-rel">Brother</div></div></div></div>
-    <div class="family-card"><h3>Bride's Family</h3><span class="eyebrow sub">Theres</span><div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Mathew Philipose</div><div class="m-rel">Father</div></div></div><div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Salimma Mathew</div><div class="m-rel">Mother</div></div></div><div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Mintu &amp; Mr. Jobin</div><div class="m-rel">Sister &amp; Brother-in-law (Joanna, Jonath, Jonita)</div></div></div><div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Shintu &amp; Mr. Don Bosco</div><div class="m-rel">Sister &amp; Brother-in-law (Isaiah, Olivia)</div></div></div><div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Tomin &amp; Mrs. Anns mol</div><div class="m-rel">Brother &amp; Sister-in-law</div></div></div></div>
+    <div class="family-card">
+      <h3>Groom's Family</h3>
+      <span class="eyebrow sub">Midhun</span>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mr. George Devasia</div><div class="m-rel">Father</div></div></div>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Shanty George</div><div class="m-rel">Mother</div></div></div>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Jithin &amp; Mrs. Mariya</div><div class="m-rel">Brother &amp; Sister-in-law</div></div></div>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Athul George</div><div class="m-rel">Brother</div></div></div>
+    </div>
+    <div class="family-card">
+      <h3>Bride's Family</h3>
+      <span class="eyebrow sub">Theres</span>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Mathew Philipose</div><div class="m-rel">Father</div></div></div>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Salimma Mathew</div><div class="m-rel">Mother</div></div></div>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Mintu &amp; Mr. Jobin</div><div class="m-rel">Sister &amp; Brother-in-law (Joanna, Jonath, Jonita)</div></div></div>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mrs. Shintu &amp; Mr. Don Bosco</div><div class="m-rel">Sister &amp; Brother-in-law (Isaiah, Olivia)</div></div></div>
+      <div class="member"><div class="avatar"></div><div><div class="m-name">Mr. Tomin &amp; Mrs. Anns mol</div><div class="m-rel">Brother &amp; Sister-in-law</div></div></div>
+    </div>
   </div>
 </section>
+
 <section class="section" id="location">
-    <div class="wedding-location-section">
-  <div class="location-card">
-    <h2>Wedding Location</h2>
-    <p class="location-name">St. Mary's Forane Church, Alakode</p>
-
-    <!-- Embedded Map Window -->
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124772.35616785819!2d75.3402349805626!3d12.239060674060564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba444f62d3232b3%3A0x7e5dd19498de1e1f!2sSt.%20Mary's%20Forane%20Church%2C%20Alakode!5e0!3m2!1sen!2sin!4v1785857544604!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    </div>
-
-    <!-- Actions Container: Direct Link & QR Code -->
-    <div class="location-actions">
-      <div class="qr-box">
-        <img src="https://via.placeholder.com/120x120.png?text=QR+Code" alt="Location QR Code" class="qr-image">
-        <span>Scan to Navigate</span>
+  <div class="wedding-location-section reveal">
+    <div class="location-card">
+      <h2>Wedding Location</h2>
+      <p class="location-name">St. Mary's Forane Church, Alakode</p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124772.35616785819!2d75.3402349805626!3d12.239060674060564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba444f62d3232b3%3A0x7e5dd19498de1e1f!2sSt.%20Mary's%20Forane%20Church%2C%20Alakode!5e0!3m2!1sen!2sin!4v1785857544604!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
-
-      <div class="link-box">
-        <p>Having trouble viewing the map? Open it directly on your phone.</p>
-        <a href="https://maps.app.goo.gl/e5c5wY79CVUtzfuo7" target="_blank" class="map-btn">
-          Open in Google Maps
-        </a>
+      <div class="location-actions">
+        <div class="qr-box">
+          <img src="https://via.placeholder.com/120x120.png?text=QR+Code" alt="Location QR Code" class="qr-image">
+          <span>Scan to Navigate</span>
+        </div>
+        <div class="link-box">
+          <p>Having trouble viewing the map? Open it directly on your phone.</p>
+          <a href="https://maps.app.goo.gl/e5c5wY79CVUtzfuo7" target="_blank" class="map-btn">
+            Open in Google Maps
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
 <section class="section" id="wishes">
   <div class="section-branch left"></div>
   <div class="section-branch right"></div>
   <div class="section-head reveal"><h2>Leave Your Wishes</h2></div>
-  <div class="wishes-wrap reveal"><form class="wish-form" id="wishForm"><input type="text" id="wishName" placeholder="Your name" required><textarea id="wishMsg" placeholder="Your wishes..." required></textarea><button type="submit" class="btn">Send Wishes</button><div id="wishThanks">Thank you! 💙</div></form><div class="wish-list" id="wishList"></div></div>
+  <div class="wishes-wrap reveal">
+    <form class="wish-form" id="wishForm">
+      <input type="text" id="wishName" placeholder="Your name" required>
+      <textarea id="wishMsg" placeholder="Your wishes..." required></textarea>
+      <button type="submit" class="btn">Send Wishes</button>
+      <div id="wishThanks">Thank you! 💙</div>
+    </form>
+    <div class="wish-list" id="wishList"></div>
+  </div>
 </section>
 
 <section class="section" id="gallery">
   <div class="section-branch left"></div>
   <div class="section-branch right"></div>
   <div class="section-head reveal"><h2>Our Photo Gallery</h2></div>
-  <div class="flipbook reveal"><div class="flip-stage"><img id="flipImg" src="https://picsum.photos/seed/flip1/700/900" alt="Gallery"><div class="flip-count" id="flipCount">1 / 8</div></div><div class="flip-controls"><button class="flip-btn prev" id="prevPhoto">&#8249;</button><button class="flip-btn next" id="nextPhoto">Next Photo &#8250;</button></div></div>
+  <div class="flipbook reveal">
+    <div class="flip-stage">
+      <img id="flipImg" src="https://picsum.photos/seed/flip1/700/900" alt="Gallery">
+      <div class="flip-count" id="flipCount">1 / 8</div>
+    </div>
+    <div class="flip-controls">
+      <button class="flip-btn prev" id="prevPhoto">&#8249;</button>
+      <button class="flip-btn next" id="nextPhoto">Next Photo &#8250;</button>
+    </div>
+  </div>
 </section>
-<!-- FLOATING MUSIC PLAYER BUTTON -->
+
 <div class="music-player-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Background Music">
-    <!-- Play Icon -->
     <svg id="playIcon" viewBox="0 0 24 24">
         <path d="M8 5v14l11-7z"/>
     </svg>
-    <!-- Pause Icon -->
     <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
         <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
     </svg>
 </div>
 
-<!-- Audio element (Replace audio source URL with your preferred MP3 link) -->
 <audio id="bgMusic" loop>
     <source src="whatsap.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
+
 <footer>
   <div class="script">Theres &amp; Midhun</div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-    // --- Floating Music Player Controls ---
 const bgMusic = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
 const playIcon = document.getElementById('playIcon');
@@ -1109,9 +989,7 @@ function toggleMusic() {
             musicBtn.classList.add('playing');
             playIcon.style.display = 'none';
             pauseIcon.style.display = 'block';
-        }).catch(error => {
-            console.log("Autoplay prevented by browser:", error);
-        });
+        }).catch(error => console.log("Autoplay prevented:", error));
     } else {
         bgMusic.pause();
         musicBtn.classList.remove('playing');
@@ -1120,7 +998,6 @@ function toggleMusic() {
     }
 }
 
-// Optional: Start music automatically on the user's first interaction anywhere on the page
 document.addEventListener('click', function startOnFirstInteraction() {
     if (bgMusic.paused && !musicBtn.classList.contains('user-paused')) {
         bgMusic.play().then(() => {
@@ -1131,16 +1008,13 @@ document.addEventListener('click', function startOnFirstInteraction() {
     }
     document.removeEventListener('click', startOnFirstInteraction);
 }, { once: true });
-</script>
-<script>
-/* ===================== CONFIG ===================== */
+
 const WEDDING = {
   weddingDateISO: "2026-11-21T10:00:00",
   venueLat: 11.8745,
   venueLng: 75.3704,
 };
 
-/* ---------- Water on Glass Initialization ---------- */
 const shimmerField = document.getElementById('shimmerField');
 if (shimmerField) {
   for (let i = 0; i < 50; i++) {
@@ -1156,7 +1030,6 @@ if (shimmerField) {
   }
 }
 
-/* ---------- Roadmap / Countdown Logic ---------- */
 const roadmapSteps = document.querySelectorAll('#roadmap .rm-step');
 const roadmapProgress = document.getElementById('roadmapProgress');
 const today = new Date(); today.setHours(0,0,0,0);
@@ -1168,8 +1041,7 @@ roadmapSteps.forEach(step => {
 if (roadmapSteps.length > 1) {
     const progressPercentage = completedCount > 0 ? (completedCount / roadmapSteps.length) * 100 : 0;
     setTimeout(() => {
-        if(window.innerWidth > 960) { roadmapProgress.style.width = `${progressPercentage}%`; }
-        else { roadmapProgress.style.height = `${progressPercentage}%`; }
+        roadmapProgress.style.width = `${progressPercentage}%`;
     }, 400);
 }
 
@@ -1183,15 +1055,8 @@ function updateCountdown(){
 }
 updateCountdown(); setInterval(updateCountdown, 1000);
 
-/* ---------- UI Helpers ---------- */
 const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-const map = L.map('map', { scrollWheelZoom: false }).setView([WEDDING.venueLat, WEDDING.venueLng], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
-L.marker([WEDDING.venueLat, WEDDING.venueLng]).addTo(map);
-
-document.getElementById('burger').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
 </script>
 
 </body>

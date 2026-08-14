@@ -861,7 +861,7 @@ footer{min-width:0;padding:62px 24px 42px;background:var(--night)}
   </div>
   <div class="story-grid reveal">
     <div class="story-img-wrapper">
-        <img src="car.jpeg" alt="Theres and Midhun">
+        <img src="image3.jpeg" alt="Theres and Midhun">
     </div>
     <div class="story-text">
         <h4>"It is not built of grand designs,<br>
@@ -1014,21 +1014,28 @@ two souls who never walk alone."</h3>
   </div>
 </section>
 
+```html
 <section class="section" id="gallery">
   <div class="section-branch left"></div>
   <div class="section-branch right"></div>
-  <div class="section-head reveal"><h2>Our Photo Gallery</h2></div>
+  <div class="section-head reveal">
+    <span class="eyebrow">Captured Moments</span>
+    <h2>Our Photo Gallery</h2>
+    <p>Flip through some of our favorite memories together.</p>
+  </div>
   <div class="flipbook reveal">
     <div class="flip-stage">
-      <img id="flipImg" src="image2.jpeg" alt="Gallery">
-      <div class="flip-count" id="flipCount">1 / 8</div>
+      <img id="flipImg" src="car.jpeg" alt="Gallery photo" loading="lazy">
+      <div class="flip-count" id="flipCount">1 / 9</div>
     </div>
     <div class="flip-controls">
-      <button class="flip-btn prev" id="prevPhoto">&#8249;</button>
+      <button class="flip-btn prev" id="prevPhoto" aria-label="Previous Photo">&#8249;</button>
       <button class="flip-btn next" id="nextPhoto">Next Photo &#8250;</button>
     </div>
   </div>
 </section>
+
+```
 
 <div class="music-player-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle Background Music">
     <svg id="playIcon" viewBox="0 0 24 24">
@@ -1129,7 +1136,54 @@ updateCountdown(); setInterval(updateCountdown, 1000);
 
 const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
 
+</script>
+<script>
+/* ============ FLIPBOOK GALLERY LOGIC ============ */
+const galleryImages = [
+  'car.jpeg',
+  'image2.jpeg'
+];
+
+let currentGalleryIdx = 0;
+
+const flipImg = document.getElementById('flipImg');
+const flipCount = document.getElementById('flipCount');
+const nextBtn = document.getElementById('nextPhoto');
+const prevBtn = document.getElementById('prevPhoto');
+
+function updateGallery(newIndex) {
+  if (!flipImg) return;
+  
+  // Trigger flip animation
+  flipImg.classList.add('turning');
+  
+  setTimeout(() => {
+    currentGalleryIdx = newIndex;
+    flipImg.src = galleryImages[currentGalleryIdx];
+    
+    if (flipCount) {
+      flipCount.textContent = `${currentGalleryIdx + 1} / ${galleryImages.length}`;
+    }
+    
+    flipImg.classList.remove('turning');
+  }, 250);
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener('click', () => {
+    const nextIdx = (currentGalleryIdx + 1) % galleryImages.length;
+    updateGallery(nextIdx);
+  });
+}
+
+if (prevBtn) {
+  prevBtn.addEventListener('click', () => {
+    const prevIdx = (currentGalleryIdx - 1 + galleryImages.length) % galleryImages.length;
+    updateGallery(prevIdx);
+  });
+}
+
+</script>
 </body>
 </html>

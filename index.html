@@ -244,15 +244,15 @@ header.nav.scrolled{
 }
 .hero-date-block {
   text-align: center;
-  background: rgba(255, 253, 249, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.25), 0 4px 20px rgba(34, 58, 77, 0.05);
   border-radius: 16px;
   padding: 22px 34px;
   margin: 24px auto;
   max-width: 380px;
-  box-shadow: 0 8px 30px rgba(34, 58, 77, 0.12);
 }
 .hero-date-big {
   font-family: 'Jost', sans-serif;
@@ -261,8 +261,14 @@ header.nav.scrolled{
   letter-spacing: .1em;
   color: var(--ink);
   text-transform: uppercase;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.95), 0 0 15px rgba(255, 255, 255, 0.7);
 }
-.hero-venue { margin-top: 10px; font-size: .95rem; color: var(--ink-soft); }
+.hero-venue { 
+  margin-top: 10px; 
+  font-size: .95rem; 
+  color: var(--ink-soft); 
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95);
+}
 .hero-cta {
   display: inline-block;
   margin-top: 38px;
@@ -766,7 +772,7 @@ header.nav.scrolled{background:rgba(255,253,249,.88);border-bottom:1px solid rgb
 .roadmap-container{max-width:1200px}.roadmap-line-bg{background:rgba(127,168,201,.22)}.rm-num{width:68px;height:68px;border-color:rgba(127,168,201,.45);box-shadow:0 0 0 6px var(--paper),0 10px 26px -16px rgba(34,58,77,.5)}.rm-step h3{font-size:1.2rem}.rm-step p{max-width:185px;margin:auto}.rm-step:not(.completed) .rm-num{background:var(--ink);border-color:var(--ink);color:#fff}
 .family-cols{gap:28px}.family-card{border-radius:22px;padding:clamp(28px,4vw,46px);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.85)}.family-card h3{font-size:1.55rem}.member{padding:16px 0}.avatar{width:46px;height:46px;background:linear-gradient(135deg,#e9f2f6,var(--blush));border:1px solid rgba(198,161,91,.35)}
 .wishes-wrap{max-width:760px}.wish-form{border-radius:22px;padding:clamp(24px,5vw,48px);background:linear-gradient(145deg,#edf5f8,#fafdfd);box-shadow:var(--shadow)}.wish-form input,.wish-form textarea{border-radius:12px;border-color:rgba(127,168,201,.4);padding:15px 17px}.wish-card{border-radius:12px;background:var(--mist);box-shadow:0 14px 25px -25px rgba(34,58,77,.6)}
-.wedding-location-section{padding:0;background:transparent;font-family:'Jost',sans-serif}.location-card{max-width:900px;padding:clamp(20px,4vw,42px);border-radius:22px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.9)}.location-card h2{font-family:'Playfair Display',serif;color:var(--ink);font-size:clamp(2rem,3vw,2.6rem)}.location-name{color:var(--ink-soft)}.map-container{height:clamp(260px,36vw,390px);border-radius:15px;box-shadow:none}.map-container iframe{width:100%;height:100%;border:0}.location-actions{background:var(--mist);padding:18px;border-radius:15px}.qr-image{border-radius:10px}.map-btn{background:var(--ink);border-radius:999px;padding:12px 22px}.map-btn:hover{background:var(--gold)}
+.wedding-location-section{padding:0;background:transparent;font-family:'Jost',sans-serif}.location-card{max-width:900px;padding:clamp(20px,4vw,42px);border-radius:22px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.9)}.location-card h2{font-family:'Playfair Display',serif;color:var(--ink);font-size:clamp(2rem,3vw,2.6rem)}.location-name{color:var(--ink-soft)}.map-container{height:clamp(260px,36vw,390px);border-radius:15px;box-shadow:none}.map-container iframe{width:100%;height:100%;border:0}.location-actions{background:var(--mist);padding:18px;border-radius:15px}.qr-image{border-radius:10px}.map-btn{background:var(--ink);border-radius999px;padding:12px 22px}.map-btn:hover{background:var(--gold)}
 .flipbook{max-width:650px;margin:auto}.flip-stage{border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.flip-controls{gap:12px}.flip-btn{border-radius:999px}.music-player-btn{right:22px;bottom:22px;width:58px;height:58px;border:1px solid rgba(255,255,255,.9);background:rgba(255,253,249,.93);box-shadow:0 14px 30px -15px rgba(34,58,77,.5)}
 footer{min-width:0;padding:62px 24px 42px;background:var(--night)}
 @media (max-width:780px){

@@ -212,9 +212,12 @@ header.nav.scrolled{
 
 .hero-inner {
   max-width: 700px;
-  background: radial-gradient(circle, rgba(242,245,248,0.85) 0%, rgba(242,245,248,0.4) 40%, rgba(242,245,248,0) 70%);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   padding: 40px;
-  border-radius: 50%;
 }
 .hero-inner .eyebrow{display:block;margin-bottom:22px;letter-spacing:.35em;}
 .hero-names{
@@ -242,7 +245,18 @@ header.nav.scrolled{
   opacity: .45;
   margin: 34px auto;
 }
-.hero-date-block { text-align: center; }
+.hero-date-block {
+  text-align: center;
+  background: rgba(255, 253, 249, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
+  padding: 22px 34px;
+  margin: 24px auto;
+  max-width: 380px;
+  box-shadow: 0 8px 30px rgba(34, 58, 77, 0.12);
+}
 .hero-date-big {
   font-family: 'Jost', sans-serif;
   font-weight: 600;
@@ -736,8 +750,17 @@ header.nav.scrolled{background:rgba(255,253,249,.88);border-bottom:1px solid rgb
 #home{min-width:0;min-height:min(920px,100svh);padding:150px 24px 100px;background:linear-gradient(120deg,rgba(251,247,239,.82),rgba(251,247,239,.18))}
 #home::after{content:"";position:absolute;inset:22px;border:1px solid rgba(255,255,255,.62);z-index:2;pointer-events:none}
 .hero-scene{opacity:.5;filter:saturate(.82) contrast(.95)}
-.hero-inner{max-width:780px;padding:clamp(34px,5vw,70px);border-radius:26px;background:rgba(255,253,249,.56);border:1px solid rgba(255,255,255,.70);box-shadow:0 30px 80px -40px rgba(34,58,77,.40);backdrop-filter:blur(7px)}
-.hero-names{font-size:clamp(4rem,9vw,7.75rem);letter-spacing:-.06em}.hero-tagline{font-size:clamp(1.1rem,2vw,1.4rem)}.hero-divider{width:min(340px,72vw);background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.75}.hero-date-big{font-size:clamp(1rem,2vw,1.3rem);letter-spacing:.16em}.hero-cta,.btn{background:var(--ink);color:var(--white);border:1px solid var(--ink);box-shadow:0 16px 28px -18px rgba(34,58,77,.75)}.hero-cta:hover,.btn:hover{background:var(--gold);border-color:var(--gold);color:var(--white)}
+.hero-inner{
+  max-width:780px;
+  padding:clamp(34px,5vw,70px);
+  border-radius:26px;
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.hero-names{font-size:clamp(4rem,9vw,7.75rem);letter-spacing:-.06em}.hero-tagline{font-size:clamp(1.1rem,2vw,1.4rem)}.hero-divider{display:none;}.hero-date-big{font-size:clamp(1rem,2vw,1.3rem);letter-spacing:.16em}.hero-cta,.btn{background:var(--ink);color:var(--white);border:1px solid var(--ink);box-shadow:0 16px 28px -18px rgba(34,58,77,.75)}.hero-cta:hover,.btn:hover{background:var(--gold);border-color:var(--gold);color:var(--white)}
 #save-the-date,#journey,#wishes{background:var(--paper)}#galleryus,#family,#videos{background:linear-gradient(135deg,#edf5f8,#f8faf9)}
 .countdown{gap:14px;margin-bottom:clamp(42px,6vw,72px)}.count-box{width:clamp(78px,11vw,126px);padding:23px 8px;border-radius:18px;border:1px solid rgba(255,255,255,.9);background:linear-gradient(145deg,#fff,#e5f0f5);box-shadow:0 18px 34px -24px rgba(34,58,77,.42)}.count-box .num{font-size:clamp(1.8rem,3vw,2.65rem)}
 .photo-grid{gap:clamp(10px,1.7vw,22px)}.photo-grid .ph{border-radius:18px;border:5px solid rgba(255,255,255,.68);box-shadow:var(--shadow)}.photo-grid .ph:nth-child(2){margin-top:42px}.photo-grid .ph:nth-child(4){margin-top:-42px}.photo-grid .ph .cap{opacity:1;padding:28px 15px 14px;font-size:.65rem}
@@ -792,12 +815,10 @@ footer{min-width:0;padding:62px 24px 42px;background:var(--night)}
     <span class="eyebrow">The Wedding Invitation</span>
     <h1 class="hero-names">Theres <span class="hero-amp">&amp;</span> Midhun</h1>
     <p class="hero-tagline">Are getting married</p>
-    <div class="hero-divider"></div>
     <div class="hero-date-block">
       <div class="hero-date-big">November 21, 2026</div>
       <div class="hero-venue">Alakode, Kannur</div>
     </div>
-    <div class="hero-divider"></div>
     <a href="#journey" class="hero-cta">View Schedule</a>
   </div>
   <div class="hero-scene" role="img" aria-label="Watercolor illustration of the couple"></div>

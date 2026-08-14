@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- Fixed width viewport forces mobile browsers to render the full desktop canvas -->
-<meta name="viewport" content="width=1280, initial-scale=0.35, maximum-scale=3.0, user-scalable=yes">
+<!-- Optimized viewport for standard responsive rendering across mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
 <title>Theres &amp; Midhun — Our Wedding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -30,9 +30,8 @@ body{
   font-family:'Jost',sans-serif;
   background:var(--cream);
   color:var(--ink-soft);
-  overflow-x:auto;
+  overflow-x:hidden;
   line-height:1.6;
-  min-width: 1280px; /* Enforces desktop layout width minimum */
 }
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
@@ -109,7 +108,6 @@ header.nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:22px 5vw;
   transition:background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
-  min-width: 1280px;
 }
 header.nav.scrolled{
   background:rgba(242, 245, 248, 0.92);
@@ -163,7 +161,6 @@ header.nav.scrolled{
   padding: 120px 6vw;
   overflow: hidden;
   background-color: var(--cream);
-  min-width: 1280px;
 }
 
 .hero-scene {
@@ -727,7 +724,7 @@ header.nav.scrolled{
     100% { box-shadow: 0 0 18px rgba(198, 161, 91, 0.7); }
 }
 
-footer{text-align:center;padding:70px 6vw 50px;background:var(--ink);color:var(--powder-pale);min-width: 1280px;}
+footer{text-align:center;padding:70px 6vw 50px;background:var(--ink);color:var(--powder-pale);}
 footer .script{font-size:2.4rem;color:var(--white);}
 footer p{margin-top:14px;font-size:.85rem;opacity:.75;}
 </style>
